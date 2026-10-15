@@ -14,6 +14,10 @@ const resultsList = document.querySelector('#results-list');
 resultsList.innerHTML = results.map(({ year, image }, index) => `
   <article class="result-item reveal">
     <h2>${year} SSC Results</h2>
+    <div class="result-banner-toolbar">
+      <span>Swipe sideways to explore all results</span>
+      <a href="${image}" target="_blank" rel="noopener" aria-label="Open the full-resolution ${year} SSC results banner in a new tab">Open full-size banner <span aria-hidden="true">↗</span></a>
+    </div>
     <div class="result-banner-scroll" role="region" tabindex="0" aria-label="${year} SSC results banner. Scroll horizontally to view the full banner on smaller screens.">
       <img class="result-banner" src="${image}" alt="${year} SSC student results banner from ZK Educational Academy" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async">
     </div>
