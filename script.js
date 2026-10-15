@@ -149,7 +149,19 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   revealElements.forEach((element) => element.classList.add('visible'));
 }
 
-document.querySelector('.contact-form').addEventListener('submit', (event) => {
+const enquiryForm = document.querySelector('.contact-form');
+enquiryForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  document.querySelector('.form-note').textContent = 'This prototype form is not connected yet. Add the academy’s contact details or a form service to receive enquiries.';
+  if (!enquiryForm.reportValidity()) return;
+
+  const formData = new FormData(enquiryForm);
+  const message = [
+    'New enquiry for ZK Educational Academy',
+    `Name: ${String(formData.get('name') || '').trim()}`,
+    `Phone: ${String(formData.get('phone') || '').trim()}`,
+    `Program: ${String(formData.get('program') || '').trim()}`,
+  ].join('\n');
+  const whatsappUrl = `https://wa.me/919133100660?text=${encodeURIComponent(message)}`;
+  document.querySelector('.form-note').textContent = 'WhatsApp is opening with your enquiry. Review it and tap Send to deliver it to the academy.';
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 });
