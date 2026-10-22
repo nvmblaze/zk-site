@@ -15,11 +15,13 @@ resultsList.innerHTML = results.map(({ year, image, full }) => `
   <article class="result-item reveal">
     <h2>${year} SSC Results</h2>
     <div class="result-banner-toolbar">
-      <span>Swipe sideways to explore all results</span>
+      <span>Tap the preview to view the full banner</span>
       <a href="${full}" target="_blank" rel="noopener" aria-label="Open the original full-resolution ${year} SSC results banner in a new tab">Open full-size banner <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="result-banner-scroll" role="region" tabindex="0" aria-label="${year} SSC results banner. Scroll horizontally to view the full banner on smaller screens.">
-      <img class="result-banner" src="${image}" srcset="assets/optimized/results-${year}-2048.jpeg 2048w, assets/optimized/results-${year}-2600.jpeg 2600w" sizes="(max-width: 600px) 2600px, 2048px" width="2600" height="709" alt="${year} SSC student results banner from ZK Educational Academy" loading="lazy" decoding="async">
+    <div class="result-banner-scroll">
+      <a href="${full}" target="_blank" rel="noopener" aria-label="View the complete ${year} SSC results banner">
+        <img class="result-banner" src="${image}" srcset="assets/optimized/results-${year}-800.jpeg 800w, assets/optimized/results-${year}-2048.jpeg 2048w, assets/optimized/results-${year}-2600.jpeg 2600w" sizes="(max-width: 700px) 100vw, 2048px" width="2600" height="709" alt="${year} SSC student results banner from ZK Educational Academy. Tap to open the full-size banner." loading="lazy" decoding="async">
+      </a>
     </div>
   </article>
 `).join('');

@@ -607,8 +607,8 @@
   .faculty-heading h2{font-size:clamp(36px,9vw,46px)}
   .faculty-scroll-hint{font-size:14px;line-height:1.5}
   .faculty-cards{gap:12px;padding:0 0 13px;scroll-padding-inline:2px}
-  .faculty-profile{flex-basis:min(84vw,360px);max-width:none}
-  .faculty-profile .faculty-portrait,.director-profile .faculty-portrait{height:clamp(280px,86vw,360px);min-height:0;flex-basis:auto}
+  .faculty-profile{flex-basis:min(72vw,300px);max-width:none}
+  .faculty-profile .faculty-portrait,.director-profile .faculty-portrait{height:clamp(205px,58vw,235px);min-height:0;flex-basis:auto}
   .faculty-profile .faculty-portrait img,.director-profile .faculty-portrait img{object-position:center 22%}
   .faculty-profile-info,.faculty-member .faculty-profile-info{padding:19px}
   .faculty-profile-info h3{font-size:21px;line-height:1.25}
@@ -617,8 +617,10 @@
   .result-item+.result-item{margin-top:36px}
   .result-item h2{font-size:23px;line-height:1.25}
   .result-banner-toolbar{font-size:13px}
-  .result-banner-scroll{max-width:100%;overscroll-behavior-x:contain}
-  .result-banner{width:2600px;min-width:2600px}
+  .result-banner-scroll{max-width:100%;overflow:hidden;overscroll-behavior-x:contain}
+  .result-banner-scroll>a{width:100%;cursor:zoom-in}
+  .result-banner{width:100%;min-width:0;max-width:100%;height:auto}
+  .result-banner-toolbar>span{font-size:13px}
   .review-summary{gap:10px;padding:15px 13px}
   .review-summary-stars{font-size:clamp(18px,5vw,23px);letter-spacing:.03em}
   .review-summary strong{font-size:15px;line-height:1.35}
