@@ -1,13 +1,19 @@
-const classroomImages = Array.from({ length: 10 }, (_, index) => `assets/class${index + 1}.jpeg`);
+const classroomImageCount = 10;
 const galleryGrid = document.querySelector('#full-gallery-grid');
 
-galleryGrid.innerHTML = classroomImages.map((src, index) => `
+galleryGrid.innerHTML = Array.from({ length: classroomImageCount }, (_, index) => {
+  const imageNumber = index + 1;
+  const originalImage = `assets/class${imageNumber}.jpeg`;
+  const smallImage = `assets/optimized/class${imageNumber}-800.jpeg`;
+  const largeImage = `assets/optimized/class${imageNumber}-1200.jpeg`;
+  return `
   <figure class="full-gallery-item">
-    <a href="${src}" target="_blank" rel="noopener" aria-label="Open full-size classroom photo ${index + 1}">
-      <img src="${src}" alt="ZK Educational Academy classroom interior" loading="${index < 3 ? 'eager' : 'lazy'}" decoding="async">
+    <a href="${originalImage}" target="_blank" rel="noopener" aria-label="Open full-size classroom photo ${imageNumber}">
+      <img src="${smallImage}" srcset="${smallImage} 800w, ${largeImage} 1200w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 850px) calc(50vw - 28px), (max-width: 1250px) calc(33.333vw - 42px), 381px" width="800" height="600" alt="ZK Educational Academy classroom interior" loading="lazy" decoding="async">
     </a>
   </figure>
-`).join('');
+`;
+}).join('');
 
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');

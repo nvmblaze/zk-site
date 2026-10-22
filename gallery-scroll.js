@@ -1,4 +1,4 @@
-const galleryImagePaths = Array.from({ length: 10 }, (_, index) => `assets/class${index + 1}.jpeg`);
+const galleryImageCount = 10;
 const galleryAspectRatios = [3 / 2, 4 / 3, 5 / 4, 7 / 5];
 const galleryCaptions = [
   ['Spacious classrooms', 'SPACE TO LEARN', 'Room to settle in and focus on each lesson.'],
@@ -21,17 +21,22 @@ const galleryWaves = {
 const galleryImagesContainer = document.querySelector('#classroom-scroll-gallery');
 
 if (galleryImagesContainer) {
-  const galleryImageItems = galleryImagePaths.map((src, index) => {
+  const galleryImageItems = Array.from({ length: galleryImageCount }, (_, index) => {
     const row = document.createElement('div');
     row.className = 'spotlight-row';
     const item = document.createElement('figure');
     item.className = 'spotlight-image';
 
     const image = document.createElement('img');
-    image.src = src;
+    const imageNumber = index + 1;
+    image.src = `assets/optimized/class${imageNumber}-800.jpeg`;
+    image.srcset = `assets/optimized/class${imageNumber}-800.jpeg 800w, assets/optimized/class${imageNumber}-1200.jpeg 1200w`;
+    image.sizes = '(max-width: 600px) 75vw, 562px';
     image.alt = `Classroom ${index + 1} at ZK Educational Academy`;
-    image.loading = index < 2 ? 'eager' : 'lazy';
+    image.loading = 'lazy';
     image.decoding = 'async';
+    image.width = 800;
+    image.height = 600;
     item.appendChild(image);
     const copy = document.createElement('div');
     copy.className = 'spotlight-copy';

@@ -4,22 +4,22 @@ const header = document.querySelector('.site-header');
 
 // Add another year by adding its year and supplied banner path to this list.
 const results = [
-  { year: '2026', image: 'assets/results-2026.jpeg' },
-  { year: '2025', image: 'assets/results-2025.jpeg' },
-  { year: '2023', image: 'assets/results-2023.jpeg' },
-  { year: '2022', image: 'assets/results-2022.jpeg' },
+  { year: '2026', image: 'assets/optimized/results-2026-2600.jpeg', full: 'assets/results-2026.jpeg' },
+  { year: '2025', image: 'assets/optimized/results-2025-2600.jpeg', full: 'assets/results-2025.jpeg' },
+  { year: '2023', image: 'assets/optimized/results-2023-2600.jpeg', full: 'assets/results-2023.jpeg' },
+  { year: '2022', image: 'assets/optimized/results-2022-2600.jpeg', full: 'assets/results-2022.jpeg' },
 ];
 
 const resultsList = document.querySelector('#results-list');
-resultsList.innerHTML = results.map(({ year, image }, index) => `
+resultsList.innerHTML = results.map(({ year, image, full }) => `
   <article class="result-item reveal">
     <h2>${year} SSC Results</h2>
     <div class="result-banner-toolbar">
       <span>Swipe sideways to explore all results</span>
-      <a href="${image}" target="_blank" rel="noopener" aria-label="Open the full-resolution ${year} SSC results banner in a new tab">Open full-size banner <span aria-hidden="true">↗</span></a>
+      <a href="${full}" target="_blank" rel="noopener" aria-label="Open the original full-resolution ${year} SSC results banner in a new tab">Open full-size banner <span aria-hidden="true">↗</span></a>
     </div>
     <div class="result-banner-scroll" role="region" tabindex="0" aria-label="${year} SSC results banner. Scroll horizontally to view the full banner on smaller screens.">
-      <img class="result-banner" src="${image}" alt="${year} SSC student results banner from ZK Educational Academy" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async">
+      <img class="result-banner" src="${image}" srcset="assets/optimized/results-${year}-2048.jpeg 2048w, assets/optimized/results-${year}-2600.jpeg 2600w" sizes="(max-width: 600px) 2600px, 2048px" width="2600" height="709" alt="${year} SSC student results banner from ZK Educational Academy" loading="lazy" decoding="async">
     </div>
   </article>
 `).join('');

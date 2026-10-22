@@ -106,7 +106,7 @@ async function loadSubmittedReviews() {
 
 async function loadGoogleReviews() {
   try {
-    const response = await fetch('/assets/google-reviews.json', { cache: 'no-cache' });
+    const response = await fetch('/assets/google-reviews.json');
     if (!response.ok) throw new Error('Google review data could not be loaded.');
     const data = await response.json();
     verifiedGoogleReviews = Array.isArray(data) ? data : [];
